@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "get_random.hpp"
+#include "row_box.hpp"
 
 using namespace std;
 
