@@ -1,56 +1,37 @@
 #include <iostream>
-#include <string>
-#include <random>
-#include <array> // Include the array library
+#include <vector>
 
-using namespace std;
+void simulateTreeRingGrowth(double initialThickness, double growthRate, int numYears) {
+    std::vector<double> ringThicknesses(numYears);
+    ringThicknesses[0] = initialThickness;
 
-int generateRandomNumber(int lower_bound, int upper_bound)
-{
-    // Use a random device to seed the generator
-    std::random_device rd;
-    std::mt19937 gen(rd());
+    std::cout << "Simulating tree ring growth for " << numYears << " years\n";
 
-    // Create a distribution in the range [lower_bound, upper_bound]
-    std::uniform_int_distribution<> distr(lower_bound, upper_bound);
+    // Calculate ring thicknesses based on AP
+    for (int i = 1; i < numYears; ++i) {
+        ringThicknesses[i] = ringThicknesses[i - 1] + growthRate;
+    }
 
-    // Generate and return a random number
-    return distr(gen);
-}
-
-void printMatrix(const array<string, 10>& rows) // Use std::array and pass by const reference
-{
-    for (const auto& row : rows)
-    {
-        cout << row << endl;
+    // Display results
+    for (int i = 0; i < numYears; ++i) {
+        std::cout << "Year " << (i + 1) << ": Thickness = " << ringThicknesses[i] << " mm\n";
     }
 }
 
-array<string, 10> initRows() // Return a std::array instead of a raw array
-{
-    array<string, 10> rows;
+int main() {
+    double initialThickness, growthRate;
+    int numYears;
 
-    for (int i = 0; i < 10; i++)
-    {
-        rows[i] = "_________";
-    }
+    std::cout << "Enter initial ring thickness (mm): ";
+    std::cin >> initialThickness;
 
-    return rows;
-}
+    std::cout << "Enter growth rate per year (mm): ";
+    std::cin >> growthRate;
 
-int main()
-{
-    const int handi_x = generateRandomNumber(4, 7);
-    const int handi_y = generateRandomNumber(7, 10);
+    std::cout << "Enter number of years to simulate: ";
+    std::cin >> numYears;
 
-    auto rows = initRows(); // Fix missing semicolon
-
-    // Optionally print the generated random numbers
-    cout << "Handi_x: " << handi_x << endl;
-    cout << "Handi_y: " << handi_y << endl;
-
-    // Print the matrix
-    printMatrix(rows);
+    simulateTreeRingGrowth(initialThickness, growthRate, numYears);
 
     return 0;
 }
