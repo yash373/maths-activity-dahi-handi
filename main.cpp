@@ -5,6 +5,8 @@
 using namespace std;
 
 int main(){
-    cout << generateRandomNumber(5,10);
+    const int handi_row = generateRandomNumber(5,10);
+
+    cout << handi_row;
     return 0;
 }
