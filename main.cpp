@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-#include "get_random.h"
+#include "get_random.hpp"
 
 using namespace std;
 
