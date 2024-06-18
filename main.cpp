@@ -5,8 +5,8 @@
 using namespace std;
 
 int main(){
-    const int handi_row = generateRandomNumber(5,10);
+    const int handi_x = generateRandomNumber(1,10);
+    const int handi_y = generateRandomNumber(7,10);
 
-    cout << handi_row;
     return 0;
 }
